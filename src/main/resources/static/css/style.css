@@ -1,0 +1,238 @@
+/* ------------------------------------ FRAGMENTS ------------------------------------------- */
+.tabs {
+    display: flex;
+}
+.tab {
+    width: 100px;
+    display: block;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.tab.active {
+    background-color: #ddd;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.tab img, .access_img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab label {
+    display: block;
+    align-content: center;
+    text-align: center;
+}
+
+.tab img:focus {
+    color: darkgreen;
+}
+
+.tab span {
+    white-space: nowrap;
+}
+
+.input_par {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    width: 100%;
+    margin-bottom: 0.5em;
+
+}
+
+.input_comp {
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+
+.input_comp label, .input_dir label {
+    display: block;
+    text-align: left;
+}
+
+.input_comp input[type="text"],
+.input_comp input[type="password"],
+.input_comp select {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+.input_comp input[type="number"]{
+    padding: 10px;
+    width: 50%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input_dir{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* Tamaño de letra */
+}
+.wrap {
+    width: 100%;
+}
+
+.button_submit {
+    background-color: #333;
+    font-size: large;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.content {
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 2em auto;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.signin_input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.registerLink {
+    display: block;
+    align-content: center;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    table-layout: fixed; /* Establecer un ancho fijo para las celdas */
+    text-align: center;
+}
+
+th, td {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    word-wrap: break-word; /* Permitir el ajuste de texto en las celdas */
+}
+
+th {
+    background-color: #ccc;
+}
+
+.cantidad_input {
+    width: 75%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+}
+
+.go_home{
+    text-align: center;
+}
+
+.bottom_separator {
+    margin-bottom: 1em;
+}
+
+input[id="busc"]{
+    width: 75%;
+    padding: 10px;
+}
+
+input[id="buscar"]{
+    background-color: #333;
+    font-size: large;
+    color: #fff;
+    cursor: pointer;
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.input_comp input[type="text"],
+.input_comp input[type="password"],
+.input_comp input[type="datetime-local"],
+.input_comp select {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+.input_par {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 0.5em;
+}
+
+.input_comp label {
+    display: block;
+    text-align: left;
+}
+
+.input_comp input[type="text"],
+.input_comp input[type="password"],
+.input_comp select,
+.input_comp input[type="date"] {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+.total {
+    max-width: 100px;
+}
+
+.th_des {
+    width: 50%;
+}
