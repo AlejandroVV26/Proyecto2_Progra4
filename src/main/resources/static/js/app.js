@@ -1,5 +1,6 @@
 const routes = {
     '/': index, // Reemplaza 'inde' por 'index'
+    '/register':register,
     '/home': home,
     '/profile': profile,
     '/accesos': accesos,

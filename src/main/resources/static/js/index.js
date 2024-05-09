@@ -14,8 +14,9 @@ function index() {
                         <label for="password">Contraseña</label>
                         <input type="password" id="password" placeholder="Contraseña" required>
                     </div>
-                    <a class="registerLink" href="/register">Registrarse</a><br><br>
-                    <input class="button_submit" type="submit" value="Log In" onclick="login()">
+                     <input class="button_submit" type="submit" value="Log In" onclick="">
+                    <input class="registerButton" type="submit" value="Registrarse" onclick="">
+                   
                 </form>
             </div>
         </section>
