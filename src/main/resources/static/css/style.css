@@ -2,6 +2,7 @@
 .tabs {
     display: flex;
 }
+
 .tab {
     width: 100px;
     display: block;
@@ -23,7 +24,8 @@
     background-color: #ddd;
 }
 
-.tab img, .access_img {
+.tab img,
+.access_img {
     display: block;
     width: 24px;
     height: 24px;
@@ -51,7 +53,6 @@
     grid-column-gap: 10px;
     width: 100%;
     margin-bottom: 0.5em;
-
 }
 
 .input_comp {
@@ -59,7 +60,8 @@
     width: 100%;
 }
 
-.input_comp label, .input_dir label {
+.input_comp label,
+.input_dir label {
     display: block;
     text-align: left;
 }
@@ -73,19 +75,20 @@
     font-size: 16px; /* Tamaño de letra */
 }
 
-.input_comp input[type="number"]{
+.input_comp input[type="number"] {
     padding: 10px;
     width: 50%;
     box-sizing: border-box;
     font-size: 16px;
 }
 
-.input_dir{
+.input_dir {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
     font-size: 16px; /* Tamaño de letra */
 }
+
 .wrap {
     width: 100%;
 }
@@ -102,7 +105,6 @@
 }
 
 /* --------------------------------------------------------------------------------------------- */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -129,20 +131,19 @@ header {
 h1 {
     font-size: 32px;
     font-weight: bold;
+    text-align: center;
 }
 
 h2 {
     font-size: 24px;
 }
 
-.signin_input{
+.signin_input {
     width: 100%;
     padding: 10px;
     margin-bottom: 1em;
     box-sizing: border-box;
-}
-
-.registerLink {
+}.registerLink {
     display: block;
     align-content: center;
     text-align: center;

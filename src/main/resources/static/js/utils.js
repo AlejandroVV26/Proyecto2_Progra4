@@ -2,11 +2,11 @@ function renderMenu(user) {
     let menu = `
         <div class="tabs">
             <a href="/home" class="tab">
-                <img src="static/images/casa.svg" alt="">
+                <img src="/images/casa.svg" alt="">
                 <label>Home</label>
             </a>
             <a href="/profile" class="tab">
-                <img src="static/images/perfil.svg" alt="">
+                <img src="/images/perfil.svg" alt="">
                 <label>Perfil</label>
             </a>
     `;
@@ -14,30 +14,30 @@ function renderMenu(user) {
     if (user === 'admin') {
         menu += `
             <a href="/accesos" class="tab">
-                <img src="static/images/accesos.svg" alt="">
+                <img src="/images/accesos.svg" alt="">
                 <label>Accesos</label>
             </a>
         `;
     } else if (user === 'proveedor') {
         menu += `
             <a href="/clients" class="tab">
-                <img src="static/images/accesos.svg" alt="">
+                <img src="/images/accesos.svg" alt="">
                 <label>Clientes</label>
             </a>
             <a href="/products" class="tab">
-                <img src="static/images/productos.svg" alt="">
+                <img src="/images/productos.svg" alt="">
                 <label>Productos</label>
             </a>
             <a href="/invoices" class="tab">
-                <img src="static/images/declarar.svg" alt="">
-                <label>Declarar</label>
+                <img src="/images/declarar.svg" alt="">
+                <label>Facturar</label>
             </a>
         `;
     }
 
     menu += `
             <a href="/" class="tab">
-                <img src="static/images/door-closed.svg" alt="">
+                <img src="/images/door-closed.svg" alt="">
                 <label>Logout</label>
             </a>
         </div>

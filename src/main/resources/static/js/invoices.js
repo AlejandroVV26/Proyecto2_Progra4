@@ -1,7 +1,7 @@
 function invoices() {
     return `
         <header>
-            <h1>Declarar</h1>
+            <h1>Facturar</h1>
         </header>
         <div>
             ${renderMenu('proveedor')}

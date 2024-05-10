@@ -1,13 +1,10 @@
 const routes = {
-    '/': index, // Reemplaza 'inde' por 'index'
-    '/register':register,
+    '/': index,
+    '/register': register,
     '/home': home,
-    '/profile': profile,
-    '/accesos': accesos,
-    '/clients': clients,
-    '/products': products,
-    '/invoices': invoices
-};
+    // ...
+}
+
 function router() {
     const path = window.location.pathname;
     const route = routes[path] || routes['/'];
