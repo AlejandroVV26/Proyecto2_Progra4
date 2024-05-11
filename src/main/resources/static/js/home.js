@@ -13,7 +13,7 @@ function home() {
       <h1>Bienvenido</h1>
     </header>
     <div>
-      ${renderMenu('proveedor')}<!--admin o proveedor-->
+      ${renderMenu('admin')}<!--admin o proveedor-->
     </div>
     <section class="content">
       ${content}

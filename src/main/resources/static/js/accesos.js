@@ -23,7 +23,7 @@ function accesos() {
                             <td>1</td>
                             <td>Juan</td>
                             <td>Pérez</td>
-                            <td><a href="#"><img class="access_img" src="static/images/accesos.svg" alt="Aceptar"></a></td>
+                            <td><a href="#"><img class="access_img" src="/images/accesos.svg" alt="Aceptar"></a></td>
                         </tr>
                         <!-- Agrega más filas de solicitudes de acceso aquí -->
                     </tbody>
