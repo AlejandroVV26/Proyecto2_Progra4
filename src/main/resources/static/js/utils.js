@@ -11,8 +11,9 @@ function renderMenu(user) {
             </a>
     `;
 
+
     if (user === 'admin') {
-        menu += `
+         menu += `
             <a href="/accesos" class="tab">
                 <img src="/images/accesos.svg" alt="">
                 <label>Accesos</label>
@@ -32,7 +33,9 @@ function renderMenu(user) {
                 <img src="/images/declarar.svg" alt="">
                 <label>Facturar</label>
             </a>
+            
         `;
+
     }
 
     menu += `

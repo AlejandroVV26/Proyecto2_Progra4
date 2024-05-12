@@ -41,9 +41,15 @@ function register() {
               <label for="address">Dirección</label>
               <input class="register_input" type="text" id="address" name="address" placeholder="Dirección" required>
             </div>
+            <div class="input_comp">
+              <label for="confirmPassword">Confirmar Contraseña</label>
+              <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña" required>
+            </div>
           </div>
           <input class="button_submit" type="submit" value="Registrarse">
+          
         </form>
+        <input class="cancelButton" type="submit" value="cancelar" onclick="navigateTo('/index')">
       </div>
     </div>
   `;

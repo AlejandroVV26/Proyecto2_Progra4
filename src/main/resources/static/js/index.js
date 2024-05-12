@@ -14,7 +14,7 @@ function index() {
             <label for="password">Contraseña</label>
             <input type="password" id="password" placeholder="Contraseña" required>
           </div>
-          <input class="button_submit" type="button" value="Log In" onclick="navigateTo('/home')">
+          <input class="button_submit" type="button" value="Iniciar sesión" onclick="navigateTo('/home')">
           <input class="registerButton" type="button" value="Registrarse" onclick="navigateTo('/register')">
         </form>
       </div>

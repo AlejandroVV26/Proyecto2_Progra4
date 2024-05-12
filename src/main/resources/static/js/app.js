@@ -1,12 +1,12 @@
 const routes = {
     '/': index,
-    '/register': register,
     '/home': home,
-    '/invoices':invoices,
-    '/clients':clients,
-    '/product':products,
     '/profile':profile,
     '/accesos':accesos,
+    '/clients':clients,
+    '/product':products,
+    '/invoices':invoices,
+    '/register': register,
 
 }
 
