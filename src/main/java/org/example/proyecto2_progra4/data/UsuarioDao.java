@@ -28,7 +28,7 @@ public class UsuarioDao {
         try {
             jdbcTemplate.update(sql, user.getId(), user.getPassword(), user.getType(), user.isAccess());
         } catch (DataAccessException e) {
-            throw new Exception("Error al crear Usuario" + e.getMessage());
+            throw new Exception("Error al crear Usuario: " + e.getMessage());
         }
     }
 }
