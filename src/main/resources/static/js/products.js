@@ -1,6 +1,5 @@
 function products() {
-    return `
-    <header>
+    return `    <header>
       <h1>Productos</h1>
     </header>
     <div>
@@ -33,6 +32,5 @@ function products() {
           <input class="button_submit" type="submit" value="Registrar">
         </form>
       </div>
-    </section>
-  `;
+    </section>`;
 }

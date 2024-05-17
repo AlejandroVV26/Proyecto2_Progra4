@@ -4,7 +4,7 @@ const routes = {
     '/profile':profile,
     '/accesos':accesos,
     '/clients':clients,
-    '/product':products,
+    '/products':products,
     '/invoices':invoices,
     '/register': register,
 
