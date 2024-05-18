@@ -1,5 +1,11 @@
 function profile() {
-    const user = getUser();
+    let user ="";
+
+    try{
+         user = getUser();
+    } catch (e) {
+        user ="anonymous";
+    }
     return `
     <header>
       <h1>Perfil de Usuario</h1>
