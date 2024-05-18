@@ -302,3 +302,15 @@ input[id="buscar"]{
     flex: 1;
     margin-bottom: 0;
 }
+#correo-electronico {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+#correo-electronico input {
+    margin-bottom: 0.5em;
+    width: 100%;
+}
