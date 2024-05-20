@@ -1,5 +1,7 @@
 package org.example.proyecto2_progra4.logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Proveedor {
@@ -9,6 +11,8 @@ public class Proveedor {
     String phone;
     String email;
     Usuario user;
+    List<Cliente> clienteList;
+    List<Producto> productoList;
 
     public Proveedor() {
         this.id="";
@@ -17,6 +21,8 @@ public class Proveedor {
         this.phone="";
         this.email="";
         this.user = new Usuario();
+        this.clienteList=new ArrayList<>();
+        this.productoList=new ArrayList<>();
     }
 
     public Proveedor(String id, String name, String lastName, String phone, String email, Usuario user) {
@@ -26,6 +32,8 @@ public class Proveedor {
         this.phone = phone;
         this.email = email;
         this.user=user;
+        this.productoList=new ArrayList<>();
+        this.clienteList=new ArrayList<>();
     }
 
     public String getId() {
@@ -74,6 +82,22 @@ public class Proveedor {
 
     public void setUser(Usuario user) {
         this.user = user;
+    }
+
+    public List<Cliente> getClienteList() {
+        return clienteList;
+    }
+
+    public void setClienteList(List<Cliente> clienteList) {
+        this.clienteList = clienteList;
+    }
+
+    public List<Producto> getProductoList() {
+        return productoList;
+    }
+
+    public void setProductoList(List<Producto> productoList) {
+        this.productoList = productoList;
     }
 
     @Override
