@@ -31,4 +31,30 @@ public class UsuarioDao {
             throw new Exception("Error al crear Usuario: " + e.getMessage());
         }
     }
+
+    public void updateAccesTrue(String id) throws Exception{
+        try{
+            boolean access = true;
+            String sql ="update Usuario set acceso=? where id =?";//SI DA ERROR HAY QUE PONER '' EN EL ID
+            int count = jdbcTemplate.update(sql, access, id);
+            if(count==0){
+                throw new Exception("No se actualizo el acceso al usuario");
+            }
+        }catch (DataAccessException e){
+            throw new Exception("Error al actualizar el acceso al usuario");
+        }
+    }
+
+    public void updateAccesFalse(String id) throws Exception{
+        try{
+            boolean access = false;
+            String sql ="update Usuario set acceso=? where id =?";//SI DA ERROR HAY QUE PONER '' EN EL ID
+            int count = jdbcTemplate.update(sql, access, id);
+            if(count==0){
+                throw new Exception("No se actualizo el acceso al usuario");
+            }
+        }catch (DataAccessException e){
+            throw new Exception("Error al actualizar el acceso al usuario");
+        }
+    }
 }
