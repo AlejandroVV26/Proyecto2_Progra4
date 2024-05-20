@@ -4,19 +4,22 @@ public class Producto {
     int id;
     String categoria;
     String description;
+    String unidad_Medida;
     double cost;
 
     public Producto() {
         this.id = 0;
         this.categoria="";
         this.description="";
+        this.unidad_Medida="";
         this.cost=0;
     }
 
-    public Producto(int id, String categoria, String description, double cost) {
+    public Producto(int id, String categoria, String description, String unidad_Medida, double cost) {
         this.id = id;
         this.categoria= categoria;
         this.description = description;
+        this.unidad_Medida=unidad_Medida;
         this.cost = cost;
     }
 
@@ -42,6 +45,14 @@ public class Producto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUnidadM() {
+        return unidad_Medida;
+    }
+
+    public void setUnidadM(String unidadM) {
+        this.unidad_Medida = unidadM;
     }
 
     public double getCost() {
