@@ -1,21 +1,21 @@
 package org.example.proyecto2_progra4.logic;
 
 public class Producto {
-    int id;
+    String id;
     String categoria;
     String description;
     String unidad_Medida;
     double cost;
 
     public Producto() {
-        this.id = 0;
+        this.id = "";
         this.categoria="";
         this.description="";
         this.unidad_Medida="";
         this.cost=0;
     }
 
-    public Producto(int id, String categoria, String description, String unidad_Medida, double cost) {
+    public Producto(String id, String categoria, String description, String unidad_Medida, double cost) {
         this.id = id;
         this.categoria= categoria;
         this.description = description;
@@ -23,11 +23,11 @@ public class Producto {
         this.cost = cost;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
