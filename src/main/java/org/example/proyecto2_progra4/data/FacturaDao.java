@@ -18,10 +18,10 @@ public class FacturaDao {
     @Autowired
     private ClienteDao clienteDao;
 
-    public List<Factura> readByProveedor(String provId) throws Exception{
-        String sql="select * from Factura f inner join Proveedor p on f.id_usuario = p.id inner join Cliente c on f.cliente_id=c.id where f.id_usuario=?";
-        try{
-            return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
+    public List<Factura> readByProveedor(String provId) throws Exception {
+        String sql = "select * from Factura f inner join Proveedor p on f.id_usuario = p.id inner join Cliente c on f.cliente_id=c.id where f.id_usuario=?";
+        try {
+            return jdbcTemplate.query(sql, new Object[]{provId}, (rs, rowNum) -> {
                 Factura factura = new Factura();
                 factura.setId(rs.getInt("id"));
                 String idProv = rs.getString("id_usuario");
@@ -34,18 +34,18 @@ public class FacturaDao {
                 }
                 factura.setCostoTotal(rs.getDouble("costo_total"));
                 return factura;
-            }));
-        } catch (DataAccessException e){
+            });
+        } catch (DataAccessException e) {
             throw new Exception("Error");
         }
     }
 
-    public void create(Factura factura) throws Exception{
-        String sql="insert into Factura (id, id_usuario, cliente_id, costo_total) values (?,?,?,?)";
-        try{
+    public void create(Factura factura) throws Exception {
+        String sql = "insert into Factura (id, id_usuario, cliente_id, costo_total) values (?,?,?,?)";
+        try {
             jdbcTemplate.update(sql, factura.getId(), factura.getProv().getId(), factura.getClient().getId(), factura.getCostoTotal());
-        }catch (DataAccessException e){
-            throw new Exception("Error al crear la factura: "+ e.getMessage());
+        } catch (DataAccessException e) {
+            throw new Exception("Error al crear la factura: " + e.getMessage());
         }
     }
 }

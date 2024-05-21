@@ -15,30 +15,30 @@ public class ProveedorProductoDao {
     @Autowired
     private ProductoDao productoDao;
 
-    public void create(String provId, String productId) throws Exception{
-        String sql="insert into ProveedorProducto (proveedor, producto) values (?,?)";
-        try{
+    public void create(String provId, String productId) throws Exception {
+        String sql = "insert into ProveedorProducto (proveedor, producto) values (?,?)";
+        try {
             jdbcTemplate.update(sql, provId, productId);
-        }catch (DataAccessException e){
-            throw new Exception("Error al crear registro en ProveedorProducto: "+e.getMessage());
+        } catch (DataAccessException e) {
+            throw new Exception("Error al crear registro en ProveedorProducto: " + e.getMessage());
         }
     }
 
-    public List<Producto> productosPorProveedor(String provId){
-        String sql="select * from ProveedorProducto where proveedor=?";
+    public List<Producto> productosPorProveedor(String provId) {
+        String sql = "select * from ProveedorProducto where proveedor=?";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
             Producto product = new Producto();
-            product=productoDao.readById(rs.getString("producto"));
+            product = productoDao.readById(rs.getString("producto"));
             return product;
         });
     }
 
-    public void delete(String provId, String productId) throws Exception{
-        String sql="delete from ProveedorProducto where proveedor=? and producto=?";
+    public void delete(String provId, String productId) throws Exception {
+        String sql = "delete from ProveedorProducto where proveedor=? and producto=?";
         try {
             jdbcTemplate.update(sql, provId, productId);
-        } catch (DataAccessException e){
-            throw new Exception("Error al eliminar registro en ProveedorProducto: "+e.getMessage());
+        } catch (DataAccessException e) {
+            throw new Exception("Error al eliminar registro en ProveedorProducto: " + e.getMessage());
         }
     }
 }

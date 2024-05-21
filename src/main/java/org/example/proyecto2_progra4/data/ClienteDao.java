@@ -51,9 +51,9 @@ public class ClienteDao {
         }
     }
 
-    public List<Cliente> getAllClients(){
-        String sql ="select * from Cliente";
-        return jdbcTemplate.query(sql, (rs, rowNum)->{
+    public List<Cliente> getAllClients() {
+        String sql = "select * from Cliente";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
             Cliente client = new Cliente();
             client.setId(rs.getString("id"));
             client.setName(rs.getString("nombre"));
