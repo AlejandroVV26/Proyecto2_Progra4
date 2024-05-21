@@ -21,7 +21,7 @@ public class FacturaDao {
     public List<Factura> readByProveedor(String provId) throws Exception {
         String sql = "select * from Factura f inner join Proveedor p on f.id_usuario = p.id inner join Cliente c on f.cliente_id=c.id where f.id_usuario=?";
         try {
-            return jdbcTemplate.query(sql, new Object[]{provId}, (rs, rowNum) -> {
+            return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
                 Factura factura = new Factura();
                 factura.setId(rs.getInt("id"));
                 String idProv = rs.getString("id_usuario");
@@ -34,7 +34,7 @@ public class FacturaDao {
                 }
                 factura.setCostoTotal(rs.getDouble("costo_total"));
                 return factura;
-            });
+            }));
         } catch (DataAccessException e) {
             throw new Exception("Error");
         }

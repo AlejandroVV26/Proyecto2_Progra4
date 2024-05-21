@@ -6,6 +6,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -26,11 +27,11 @@ public class FacturaProductoDao {
 
     public List<Producto> productosPorFactura(int facturaId) {
         String sql = "select * from FacturaProducto where id_factura=?";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+        return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{facturaId}, (rs, rowNum) -> {
             Producto producto = new Producto();
             producto = productoDao.readById(rs.getString("id_producto"));
             return producto;
-        });
+        }));
     }
 
     public void delete(int facturaId, String productoId) throws Exception {
