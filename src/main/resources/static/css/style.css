@@ -59,6 +59,10 @@
     margin-bottom: 0.5em;
     width: 100%;
 }
+.input-co {
+    margin-bottom: 0.5em;
+    width: 100%;
+}
 
 .input_comp label,
 .input_dir label {
@@ -313,4 +317,36 @@ input[id="buscar"]{
 #correo-electronico input {
     margin-bottom: 0.5em;
     width: 100%;
+}
+select {
+    width: 200px; /* Ajusta el ancho del combobox según tus necesidades */
+    height: 30px; /* Ajusta la altura del combobox según tus necesidades */
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.input-group:last-child {
+    margin-right: 0;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group select {
+    height: 40px; /* Ajusta la altura del combobox */
+}
+
+.input-group select option {
+    font-size: 18px; /* Ajusta el tamaño de fuente de las opciones */
+    padding: 8px; /* Agrega un espacio interno a las opciones */
 }
