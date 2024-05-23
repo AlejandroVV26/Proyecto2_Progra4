@@ -10,11 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class ProveedorProductoDao {
+public class ProveedorProductoRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Autowired
-    private ProductoDao productoDao;
+    private ProductoRepository productoRepository;
 
     public void create(String provId, String productId) throws Exception {
         String sql = "insert into ProveedorProducto (proveedor, producto) values (?,?)";
@@ -29,7 +29,7 @@ public class ProveedorProductoDao {
         String sql = "select * from ProveedorProducto where proveedor=?";
         return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
             Producto product = new Producto();
-            product = productoDao.readById(rs.getString("producto"));
+            product = productoRepository.readById(rs.getString("producto"));
             return product;
         }));
     }

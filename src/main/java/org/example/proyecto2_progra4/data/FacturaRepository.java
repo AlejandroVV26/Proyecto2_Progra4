@@ -10,13 +10,13 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class FacturaDao {
+public class FacturaRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Autowired
-    private ProveedorDao proveedorDao;
+    private ProveedorRepository proveedorRepository;
     @Autowired
-    private ClienteDao clienteDao;
+    private ClienteRepository clienteRepository;
 
     public List<Factura> readByProveedor(String provId) throws Exception {
         String sql = "select * from Factura f inner join Proveedor p on f.id_usuario = p.id inner join Cliente c on f.cliente_id=c.id where f.id_usuario=?";
@@ -25,10 +25,10 @@ public class FacturaDao {
                 Factura factura = new Factura();
                 factura.setId(rs.getInt("id"));
                 String idProv = rs.getString("id_usuario");
-                factura.setProv(proveedorDao.read(idProv));
+                factura.setProv(proveedorRepository.read(idProv));
                 String idClient = rs.getString("cliente_id");
                 try {
-                    factura.setClient(clienteDao.read(idClient));
+                    factura.setClient(clienteRepository.read(idClient));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

@@ -10,11 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class ProveedorClienteDao {
+public class ProveedorClienteRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Autowired
-    private ClienteDao clienteDao;
+    private ClienteRepository clienteRepository;
 
     public void create(String provId, String clientId) throws Exception {
         String sql = "insert into ProveedorCliente (id_proveedor, id_cliente) values (?,?)";
@@ -30,7 +30,7 @@ public class ProveedorClienteDao {
         return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
             Cliente client = new Cliente();
             try {
-                client = clienteDao.read(rs.getString("id_cliente"));
+                client = clienteRepository.read(rs.getString("id_cliente"));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
