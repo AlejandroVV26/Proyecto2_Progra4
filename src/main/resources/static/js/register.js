@@ -55,7 +55,7 @@ function register() {
 
     // Aquí es donde agregamos el evento click al botón de registro
     const registrarBtn = document.getElementById('registrarBtn');
-    registrarBtn.addEventListener('click', registrarUsuario);
+    registrarBtn.addEventListener('click', this.registrar);
 
     // Función que se ejecutará cuando se haga clic en el botón de registro
 
@@ -129,3 +129,42 @@ Luego, se obtienen los valores de los campos de entrada utilizando document.getE
 
 
 Después, se puede realizar la lógica necesaria para registrar al usuario, como enviar una solicitud al servidor utilizando fetch()*/
+
+
+registrar = async () => {
+    event.preventDefault();
+    var nombre = document.getElementById('name').value;
+    var apellidos = document.getElementById('lastName').value;
+    var telefono = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var cedula = document.getElementById('id').value;
+    var contrasena = document.getElementById('password').value;
+    var direccion = document.getElementById('address').value;
+    var confirmarContrasena = document.getElementById('confirmPassword').value;
+
+    const register = {
+        name: nombre,
+        lastName: apellidos,
+        mobile: telefono,
+        email: email,
+        id: cedula,
+        password: contrasena,
+        address: direccion,
+    }
+    if(contrasena===confirmarContrasena){
+        const request = new Request(`${"http://localhost:8080/registrarse"}?nombre= ${nombre.value} &apellidos=${apellidos.value}
+                                    &telefono=${telefono.value}&email=${email.value}&cedula=${cedula.value}&contrasena=${contrasena.value}&direccion=${direccion.value}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(register)
+        });
+        let response = await fetch(request);
+        if (!response.ok) {
+            alert("Probelmas para arrgelar");
+            throw new Error("Error de verificacion");
+        }
+    }
+    // location.reload();
+}
