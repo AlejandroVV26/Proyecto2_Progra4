@@ -1,5 +1,6 @@
 package org.example.proyecto2_progra4.data;
 
+import org.example.proyecto2_progra4.logic.Factura;
 import org.example.proyecto2_progra4.logic.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,6 +16,8 @@ public class FacturaProductoRepository {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private ProductoRepository productoRepository;
+    @Autowired
+    private FacturaRepository facturaRepository;
 
     public void create(int facturaId, String productoId) throws Exception {
         String sql = "insert into FacturaProducto (id_factura, id_producto) values (?,?)";
@@ -27,9 +30,10 @@ public class FacturaProductoRepository {
 
     public List<Producto> productosPorFactura(int facturaId) {
         String sql = "select * from FacturaProducto where id_factura=?";
+        //HACER UN FACTURA READ POR ID DE LA FACTURA
         return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{facturaId}, (rs, rowNum) -> {
             Producto producto = new Producto();
-            producto = productoRepository.readById(rs.getString("id_producto"));
+//            producto = productoRepository.readById(rs.getString("id_producto"));
             return producto;
         }));
     }

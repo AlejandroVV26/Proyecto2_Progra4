@@ -25,11 +25,11 @@ public class ProveedorProductoRepository {
         }
     }
 
-    public List<Producto> productosPorProveedor(String provId) {
-        String sql = "select * from ProveedorProducto where proveedor=?";
-        return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
+    public List<Producto> productosPorProveedor(String provId, String prodId) {
+        String sql = "select * from ProveedorProducto where proveedor=? and producto=?";
+        return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId, prodId}, (rs, rowNum) -> {
             Producto product = new Producto();
-            product = productoRepository.readById(rs.getString("producto"));
+            product = productoRepository.readById(rs.getString("producto"), rs.getString("proveedor"));
             return product;
         }));
     }
