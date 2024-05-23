@@ -58,34 +58,57 @@ function register() {
     registrarBtn.addEventListener('click', registrarUsuario);
 
     // Función que se ejecutará cuando se haga clic en el botón de registro
-    function registrarUsuario(event) {
-        event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
-        // Obtener los valores de los campos de entrada
-        const nombre = document.getElementById('name').value;
-        const apellidos = document.getElementById('lastName').value;
-        const telefono = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const cedula = document.getElementById('id').value;
-        const contrasena = document.getElementById('password').value;
-        const direccion = document.getElementById('address').value;
-        const confirmarContrasena = document.getElementById('confirmPassword').value;
+}
 
-        // Aquí puedes realizar la lógica necesaria para registrar al usuario
-        // Por ejemplo, puedes enviar una solicitud al servidor utilizando fetch() o XMLHttpRequest
-        // o realizar alguna otra operación necesaria
+const registrarUsuario = (e) => {
+    e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
-        console.log('Datos ingresados:', {
-            nombre,
-            apellidos,
-            telefono,
-            email,
-            cedula,
-            contrasena,
-            direccion,
-            confirmarContrasena
-        });
+    // Obtener los valores de los campos de entrada
+    const nombre = document.getElementById('name').value;
+    const apellidos = document.getElementById('lastName').value;
+    const telefono = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const cedula = document.getElementById('id').value;
+    const contrasena = document.getElementById('password').value;
+    const direccion = document.getElementById('address').value;
+    const confirmarContrasena = document.getElementById('confirmPassword').value;
+
+    const register = {
+        name: nombre,
+        lastName: apellidos,
+        mobile: telefono,
+        email: email,
+        id: cedula,
+        password: contrasena,
+        address: direccion,
     }
+
+    // Aquí puedes realizar la lógica necesaria para registrar al usuario
+    // Por ejemplo, puedes enviar una solicitud al servidor utilizando fetch() o XMLHttpRequest
+    // o realizar alguna otra operación necesaria
+
+    doRegister(register).then((data) => {
+        console.log(data); // JSON data parsed by `data.json()` call
+    });
+}
+
+async function doRegister(registerForm = {}) {
+    const url = 'http://localhost:8080/registrarse';
+
+    const response = await fetch(url, {
+        method: "POST",
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registerForm),
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
 }
 /*Primero, se agrega un id="registrarBtn" al botón de registro dentro del formulario <input class="button_submit" type="submit" value="Registrarse" id="registrarBtn">.
 
