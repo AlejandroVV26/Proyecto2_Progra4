@@ -6,6 +6,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,15 +24,6 @@ public class ProveedorProductoRepository {
         } catch (DataAccessException e) {
             throw new Exception("Error al crear registro en ProveedorProducto: " + e.getMessage());
         }
-    }
-
-    public List<Producto> productosPorProveedor(String provId, String prodId) {
-        String sql = "select * from ProveedorProducto where proveedor=? and producto=?";
-        return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId, prodId}, (rs, rowNum) -> {
-            Producto product = new Producto();
-            product = productoRepository.readById(rs.getString("producto"), rs.getString("proveedor"));
-            return product;
-        }));
     }
 
     public void delete(String provId, String productId) throws Exception {

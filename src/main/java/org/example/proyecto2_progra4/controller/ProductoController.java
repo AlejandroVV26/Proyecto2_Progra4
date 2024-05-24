@@ -15,17 +15,15 @@ public class ProductoController {
     @Autowired
     private ProductoRepository productoRepository;
 
-    @GetMapping
-    public ResponseEntity<List<Producto>> getAllProducts(){
+    @GetMapping("/{proveedorId}")
+    public ResponseEntity<List<Producto>> getProvProducts(@PathVariable("proveedorId")String provId){
         try{
-            List<Producto> list = productoRepository.getAll();
+            List<Producto> list = productoRepository.getAllProductsByProvId(provId);
             return ResponseEntity.ok(list);
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-    // HACER UN GET ALL PRODUCTOS POR PROVEEDOR
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id")String id, @RequestParam("proveedorId")String provId){
@@ -38,6 +36,11 @@ public class ProductoController {
         Producto product = productoRepository.readByDescription(desc);
         return ResponseEntity.ok(product);
     }
+
+//    @PostMapping("/agregar")
+//    public ResponseEntity<Void> addProduct(){
+//
+//    }
 
 //    @PutMapping("/edit/{id}")
 //    public ResponseEntity<Void> editProductById(@PathVariable("id")String id, @RequestParam("")){

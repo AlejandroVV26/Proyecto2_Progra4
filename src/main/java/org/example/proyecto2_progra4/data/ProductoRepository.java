@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -128,5 +129,17 @@ public class ProductoRepository {
            producto.setCost(rs.getDouble("costo"));
            return producto;
         });
+    }
+
+    public List<Producto> getAllProductsByProvId(String provId) {
+        String sql = "select p.id, p.categoria, p.descripcion, p.unidad_medida, p.costo from Producto p" +
+                "join ProveedorProducto pp on p.id=pp.producto and pp.proveedor=?";
+        List<Producto> list = new ArrayList<>();
+        jdbcTemplate.query(sql, new Object[]{provId}, (rs, rowNum) -> {
+            Producto product = mapResultSetToProducto(rs);
+            list.add(product);
+            return product;
+        });
+        return list;
     }
 }
