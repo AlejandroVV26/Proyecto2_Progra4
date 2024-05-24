@@ -26,10 +26,10 @@ public class ProductoRepository {
         try{
             if(!productsIds.isEmpty()){
                 productId = productsIds.get(0);
-                proveedorProductoRepository.create(productId, provId);
+                proveedorProductoRepository.create(provId, productId);
             } else {
                 productId = insertProduct(product);
-                proveedorProductoRepository.create(productId, provId);
+                proveedorProductoRepository.create(provId, productId);
             }
         }catch (Exception e){
             e.printStackTrace();
