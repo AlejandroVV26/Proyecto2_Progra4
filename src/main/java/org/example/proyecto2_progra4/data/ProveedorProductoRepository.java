@@ -14,8 +14,6 @@ import java.util.List;
 public class ProveedorProductoRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private ProductoRepository productoRepository;
 
     public void create(String provId, String productId) throws Exception {
         String sql = "insert into ProveedorProducto (proveedor, producto) values (?,?)";
