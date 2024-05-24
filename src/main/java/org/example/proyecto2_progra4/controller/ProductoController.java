@@ -27,7 +27,7 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id")String id, @RequestParam("proveedorId")String provId){
-        Producto product = productoRepository.readById(id, provId); // HACER UN GET ALL PRODUCTOS POR PROVEEDOR
+        Producto product = productoRepository.readById(id, provId);
         return ResponseEntity.ok(product);
     }
 
@@ -37,7 +37,7 @@ public class ProductoController {
         return ResponseEntity.ok(product);
     }
 
-    @PostMapping("/agregar/{proveedorId}")
+    @PutMapping("/agregar/{proveedorId}")
     public ResponseEntity<Void> addProduct(Producto producto, @PathVariable("proveedorId")String provId){
         try{
             productoRepository.createProduct(producto, provId);

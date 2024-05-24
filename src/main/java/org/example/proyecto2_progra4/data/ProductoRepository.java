@@ -22,7 +22,7 @@ public class ProductoRepository {
     public void createProduct(Producto product, String provId) throws Exception {
         String productId;
         String sql = "select id from Producto where descripcion =?";
-        List<String> productsIds = jdbcTemplate.query(sql, new Object[]{product.getId()}, (rs, rowNum) -> rs.getString(1));
+        List<String> productsIds = jdbcTemplate.query(sql, new Object[]{product.getDescription()}, (rs, rowNum) -> rs.getString(1));
         try{
             if(!productsIds.isEmpty()){
                 productId = productsIds.get(0);
