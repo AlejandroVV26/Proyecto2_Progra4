@@ -13,8 +13,6 @@ import java.util.List;
 public class ProveedorClienteRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private ClienteRepository clienteRepository;
 
     public void create(String provId, String clientId) throws Exception {
         String sql = "insert into ProveedorCliente (id_proveedor, id_cliente) values (?,?)";
@@ -23,19 +21,6 @@ public class ProveedorClienteRepository {
         } catch (DataAccessException e) {
             throw new Exception("Error al crear ProveedorCliente: " + e.getMessage());
         }
-    }
-
-    public List<Cliente> clientesPorProveedor(String provId) {
-        String sql = "select * from ProveedorCliente where id_proveedor=?";
-        return Collections.singletonList(jdbcTemplate.queryForObject(sql, new Object[]{provId}, (rs, rowNum) -> {
-            Cliente client = new Cliente();
-            try {
-                client = clienteRepository.read(rs.getString("id_cliente"));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            return client;
-        }));
     }
 
     public void delete(String provId, String clientId) throws Exception {
