@@ -37,14 +37,13 @@ public class ProductoController {
         return ResponseEntity.ok(product);
     }
 
-//    @PostMapping("/agregar")
-//    public ResponseEntity<Void> addProduct(){
-//
-//    }
-
-//    @PutMapping("/edit/{id}")
-//    public ResponseEntity<Void> editProductById(@PathVariable("id")String id, @RequestParam("")){
-//        Producto product = productoRepository.readById(id);
-//
-//    }
+    @PostMapping("/agregar/{proveedorId}")
+    public ResponseEntity<Void> addProduct(Producto producto, @PathVariable("proveedorId")String provId){
+        try{
+            productoRepository.createProduct(producto, provId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e){
+            throw new RuntimeException("Error al agregar producto",e);
+        }
+    }
 }
