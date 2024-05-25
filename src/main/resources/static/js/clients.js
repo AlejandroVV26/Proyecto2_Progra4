@@ -72,7 +72,7 @@ function registrarCliente(event) {
 
 
 
-    fetch(`/api/clientes/agregar/${proveedorId}`, {
+    fetch(`/api/clientes/agregar/{{proveedorId}}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -82,13 +82,13 @@ function registrarCliente(event) {
         .then(response => {
             if (response.ok) {
                 // Manejo de respuesta exitosa
-                console.log('Cliente registrado correctamente');
+                alert('Cliente registrado correctamente');
             } else {
                 // Manejo de error
-                throw new Error('Error al registrar el cliente');
+                throw new alert('Error al registrar el cliente');
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            alert('Error:', error);
         });
 }
