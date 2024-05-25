@@ -41,4 +41,16 @@ public class ProveedorRepository {
             throw new Exception("Error al actualizar proveedor: " + e.getMessage());
         }
     }
+
+    public Boolean stubRegistered(String id){
+        String sql="select count (*) as registrado from StubProveedores where id_registrada=?";
+        try{
+            int registered = jdbcTemplate.update(sql, id);
+            return registered >= 0;
+        } catch (DataAccessException e){
+            System.err.println("Error al comprobar si esta registrado en el Stub: "+e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Error al comprobar si esta registrado en el Stub: "+e.getMessage());
+        }
+    }
 }

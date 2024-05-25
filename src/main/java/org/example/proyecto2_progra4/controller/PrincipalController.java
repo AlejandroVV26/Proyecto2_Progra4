@@ -35,9 +35,13 @@ public class PrincipalController {
         Usuario user = new Usuario(id.trim(), password.trim(), "Proveedor");
         Proveedor prov = new Proveedor(id.trim(), name, lastName, phone, email, user);
         try{
-            usuarioRepository.createUser(user);
-            proveedorRepository.create(prov);
-            return ResponseEntity.ok().build();
+            if (proveedorRepository.stubRegistered(id.trim())){
+                usuarioRepository.createUser(user);
+                proveedorRepository.create(prov);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
