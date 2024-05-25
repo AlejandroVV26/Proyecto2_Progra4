@@ -28,7 +28,7 @@ public class FacturaRepository {
                 factura.setProv(proveedorRepository.read(idProv));
                 String idClient = rs.getString("cliente_id");
                 try {
-                    factura.setClient(clienteRepository.read(idClient));
+                    //factura.setClient(clienteRepository.read(idClient));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

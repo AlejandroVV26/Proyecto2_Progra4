@@ -6,15 +6,6 @@ function products() {
     <div>${renderMenu('proveedor')}</div>
     <section class="content">
       <div class="wrap">
-        <form onsubmit="buscarProductoPorId(event)">
-          <div class="buscar-container">
-            <div class="input_comp">
-              <label for="busc">Buscar producto por id:</label>
-              <input type="text" id="busc" placeholder="ID del producto" required>
-            </div>
-            <input id="buscar" class="btn-buscar" type="submit" value="Buscar">
-          </div>
-        </form>
         <form onsubmit="registrarProducto(event)">
           <div class="input_par">
             <div class="input_comp">
@@ -71,8 +62,8 @@ function registrarProducto(event) {
         costo:costo,
     };
 
-    fetch('api/productos/agregar/{{proveedorId}}', {
-        method: 'POST',
+    fetch('api/productos/agregar/${proveedorId}', {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -88,29 +79,5 @@ function registrarProducto(event) {
         .catch(error => {
             console.error('Error:', error);
             alert('Error al registrar el producto');
-        });
-}
-
-// Función para buscar un producto por ID
-function buscarProductoPorId(event) {
-    event.preventDefault();
-
-    const id = document.getElementById('busc').value;
-
-    fetch(`/api/productos${id}`)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Error al buscar el producto');
-            }
-        })
-        .then(producto => {
-            // Mostrar los detalles del producto en la interfaz
-            console.log(producto);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al buscar el producto');
         });
 }
