@@ -2,7 +2,6 @@ package org.example.proyecto2_progra4.data;
 
 import org.example.proyecto2_progra4.logic.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
