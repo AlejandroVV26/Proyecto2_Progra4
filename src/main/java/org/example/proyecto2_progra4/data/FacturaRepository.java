@@ -25,10 +25,10 @@ public class FacturaRepository {
                 Factura factura = new Factura();
                 factura.setId(rs.getInt("id"));
                 String idProv = rs.getString("id_usuario");
-                factura.setProv(proveedorRepository.read(idProv));
+                factura.setProv(proveedorRepository.readById(idProv));
                 String idClient = rs.getString("cliente_id");
                 try {
-                    //factura.setClient(clienteRepository.read(idClient));
+//                    factura.setClient(clienteRepository.read(idClient));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

@@ -11,7 +11,7 @@ public class ProveedorRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public Proveedor read(String id) {
+    public Proveedor readById(String id) {
         String sql = "select * from Proveedor where id=?";
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
             Proveedor prov = new Proveedor();
@@ -39,15 +39,6 @@ public class ProveedorRepository {
             jdbcTemplate.update(sql, prov.getName(), prov.getLastName(), prov.getPhone(), prov.getEmail(), prov.getId());
         } catch (DataAccessException e) {
             throw new Exception("Error al actualizar proveedor: " + e.getMessage());
-        }
-    }
-
-    public void delete(String id) throws Exception {
-        String sql = "delete from Proveedor where id=?";
-        try {
-            jdbcTemplate.update(sql, id);
-        } catch (DataAccessException e) {
-            throw new Exception("No se elimino el proveedor: " + e.getMessage());
         }
     }
 }
