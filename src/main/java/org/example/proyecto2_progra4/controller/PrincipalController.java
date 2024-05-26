@@ -39,9 +39,9 @@ public class PrincipalController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestParam("email")String email, @RequestParam("password")String password){
+    public ResponseEntity<Object> login(@RequestParam("id")String id, @RequestParam("password")String password){
         try{
-            Usuario user = usuarioRepository.login(email, password);
+            Usuario user = usuarioRepository.login(id, password);
             if (user.isAccess()){
                 Proveedor prov = proveedorRepository.readById(user.getId());
                 return ResponseEntity.ok().body(prov);
