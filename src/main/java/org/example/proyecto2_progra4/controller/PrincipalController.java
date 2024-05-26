@@ -3,18 +3,14 @@ package org.example.proyecto2_progra4.controller;
 import jakarta.websocket.server.PathParam;
 import org.example.proyecto2_progra4.data.ProveedorRepository;
 import org.example.proyecto2_progra4.data.UsuarioRepository;
-import org.example.proyecto2_progra4.data.dto.RegisterFromDto;
 import org.example.proyecto2_progra4.logic.Proveedor;
 import org.example.proyecto2_progra4.logic.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class PrincipalController {
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -24,11 +20,6 @@ public class PrincipalController {
     public String levantarPaginaPrincipal() {
         return "index.html";
     }
-
-//    @PostMapping("/registrarse")
-//    private ResponseEntity<Void> registrarse(@RequestBody RegisterFromDto register) {
-//        return ResponseEntity.ok().build();
-//    }
 
     @PostMapping("/registrarse")
     public ResponseEntity<Void> register(@PathParam("nombre") String name, @PathParam("apellidos")String lastName, @PathParam("telefono")String phone, @PathParam("email")String email, @PathParam("cedula")String id, @PathParam("contrasena")String password, @PathParam("direccion")String address){
@@ -44,6 +35,21 @@ public class PrincipalController {
             }
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestParam("email")String email, @RequestParam("password")String password){
+        try{
+            Usuario user = usuarioRepository.login(email, password);
+            if (user.isAccess()){
+                Proveedor prov = proveedorRepository.readById(user.getId());
+                return ResponseEntity.ok().body(prov);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Proveedor No Tiene Acceso");
+            }
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al autenticar al Usuario: "+e.getMessage());
         }
     }
 }
