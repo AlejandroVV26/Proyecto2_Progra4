@@ -15,7 +15,7 @@ public class ProveedorController {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
-    @PostMapping("/agergar")
+    @PostMapping("/agregar")
     public ResponseEntity<Void> addProveedor(Proveedor prov){
         try{
             proveedorRepository.create(prov);
@@ -35,3 +35,5 @@ public class ProveedorController {
         }
     }
 }
+
+
