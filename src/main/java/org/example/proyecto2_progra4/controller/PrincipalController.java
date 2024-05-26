@@ -52,4 +52,24 @@ public class PrincipalController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al autenticar al Usuario: "+e.getMessage());
         }
     }
+
+    @PutMapping("/giveAccess/{id}")
+    public ResponseEntity<Void>giveAccess(@PathVariable("id")String id){
+        try{
+            usuarioRepository.updateAccessTrue(id);
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PutMapping("/revokeAccess/{id}")
+    public ResponseEntity<Void>revokeAccess(@PathVariable("id")String id){
+        try{
+            usuarioRepository.updateAccessFalse(id);
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
