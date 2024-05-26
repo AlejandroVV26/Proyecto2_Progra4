@@ -1,9 +1,9 @@
 function home() {
-  const user = getUser();
-  let content = '';
+    const user = getUser();
+    let content = '';
 
-  if (user === 'admin') {
-    content = `
+    if (user === 'admin') {
+        content = `
       <div class="forAdmin">
         <h3 style="text-align:center">Usuarios Registrados</h3>
     <table>
@@ -30,8 +30,8 @@ function home() {
     </table>
       </div>
     `;
-  } else if (user === 'proveedor') {
-    content = `
+    } else if (user === 'proveedor') {
+        content = `
       <div class="forProvs">
         <div class="bottom_separator">
           <h2>Facturas</h2>
@@ -96,9 +96,9 @@ function home() {
         </div>
       </div>
     `;
-  }
+    }
 
-  return `
+    return `
     <header>
       <h1>Bienvenido ${user}</h1>
     </header>
@@ -111,3 +111,38 @@ function home() {
   `;
 }
 
+function giveAccess(userId) {
+    const url = 'http://localhost:8080/giveAccess/{{id}}';
+    fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al dar acceso al proveedor");
+        }
+        console.log("Acceso del proveedor es True");
+    }).catch((error) => {
+        console.error("Error: ", error);
+    });
+    event.preventDefault();
+}
+
+function revokeAccess(userId) {
+    const url = 'http://localhost:8080/revokeAccess/{{id}}';
+    fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al dar acceso al proveedor");
+        }
+        console.log("Acceso del proveedor es False");
+    }).catch((error) => {
+        console.error("Error: ", error);
+    });
+    event.preventDefault();
+}
