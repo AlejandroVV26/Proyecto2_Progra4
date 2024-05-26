@@ -20,3 +20,24 @@ function index() {
       </div>
     </section>`
 }
+
+function logIn() {
+    const id = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const url = 'http://localhost:8080/login?id=${id}&password=${password}';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al ingresar");
+        }
+        console.log("Ingreso Exitoso");
+    }).catch((error) => {
+        console.error("Error: ", error);
+    });
+    event.preventDefault();
+}
