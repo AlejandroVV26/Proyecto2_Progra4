@@ -7,7 +7,7 @@ const routes = {
     '/products':products,
     '/invoices':invoices,
     '/register': register,
-
+    '/Confirmacion':Confirmacion,
 }
 
 function router() {
