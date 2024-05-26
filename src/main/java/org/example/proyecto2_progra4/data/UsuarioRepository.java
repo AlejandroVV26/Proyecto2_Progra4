@@ -11,7 +11,7 @@ public class UsuarioRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Usuario read(String id, String pass) {
+    public Usuario login(String id, String pass) {
         String sql = "select * from Usuario u where u.id=? and u.contrasena=?";
         return jdbcTemplate.queryForObject(sql, new Object[]{id, pass}, (rs, rowNum) -> {
             Usuario user = new Usuario();
@@ -32,10 +32,10 @@ public class UsuarioRepository {
         }
     }
 
-    public void updateAccesTrue(String id) throws Exception {
+    public void updateAccessTrue(String id) throws Exception {
         try {
             boolean access = true;
-            String sql = "update Usuario set acceso=? where id =?";//SI DA ERROR HAY QUE PONER '' EN EL ID
+            String sql = "update Usuario set acceso=? where id =?";
             int count = jdbcTemplate.update(sql, access, id);
             if (count == 0) {
                 throw new Exception("No se actualizo el acceso al usuario");
@@ -45,10 +45,10 @@ public class UsuarioRepository {
         }
     }
 
-    public void updateAccesFalse(String id) throws Exception {
+    public void updateAccessFalse(String id) throws Exception {
         try {
             boolean access = false;
-            String sql = "update Usuario set acceso=? where id =?";//SI DA ERROR HAY QUE PONER '' EN EL ID
+            String sql = "update Usuario set acceso=? where id =?";
             int count = jdbcTemplate.update(sql, access, id);
             if (count == 0) {
                 throw new Exception("No se actualizo el acceso al usuario");
