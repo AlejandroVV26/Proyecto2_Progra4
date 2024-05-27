@@ -15,15 +15,15 @@ public class ProveedorController {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
-    @PostMapping("/agregar")
-    public ResponseEntity<Void> addProveedor(Proveedor prov){
-        try{
-            proveedorRepository.create(prov);
-            return ResponseEntity.ok().build();
-        } catch (Exception e){
-            throw new RuntimeException("Error al agregar proveedor",e);
-        }
-    }
+//    @PostMapping("/agregar")
+//    public ResponseEntity<Void> addProveedor(Proveedor prov){
+//        try{
+//            proveedorRepository.create(prov);
+//            return ResponseEntity.ok().build();
+//        } catch (Exception e){
+//            throw new RuntimeException("Error al agregar proveedor",e);
+//        }
+//    }
 
     @PutMapping("/editar")
     public ResponseEntity<Void> updateProv(Proveedor prov){
