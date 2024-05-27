@@ -7,8 +7,8 @@ function index() {
       <div class="wrap">
         <form>
           <div class="input_comp">
-            <label for="email">Correo Electrónico</label>
-            <input type="text" id="email" placeholder="Correo Electrónico" required>
+            <label for="email">Identificación</label>
+            <input type="text" id="id" placeholder="Identificación" required>
           </div>
           <div class="input_comp">
             <label for="password">Contraseña</label>
@@ -22,7 +22,7 @@ function index() {
 }
 
 function logIn() {
-    const id = document.getElementById("email").value;
+    const id = document.getElementById("id").value;
     const password = document.getElementById("password").value;
 
     const url = '${http://localhost:8080/login}?id=${id}&password=${password}';
