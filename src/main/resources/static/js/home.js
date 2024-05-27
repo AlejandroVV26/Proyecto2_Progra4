@@ -111,7 +111,7 @@ function home() {
   `;
 }
 
-function giveAccess(userId) {
+function giveAccess(id) {
     const url = 'http://localhost:8080/giveAccess/{{id}}';
     fetch(url, {
         method: 'PUT',
@@ -129,7 +129,7 @@ function giveAccess(userId) {
     event.preventDefault();
 }
 
-function revokeAccess(userId) {
+function revokeAccess(id) {
     const url = 'http://localhost:8080/revokeAccess/{{id}}';
     fetch(url, {
         method: 'PUT',
