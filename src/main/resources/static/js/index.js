@@ -14,7 +14,7 @@ function index() {
             <label for="password">Contraseña</label>
             <input type="password" id="password" placeholder="Contraseña" required>
           </div>
-          <input class="button_submit" type="button" value="Iniciar sesión" onclick="navigateTo('/home')">
+          <input class="button_submit" type="button" value="Iniciar sesión" onclick="logIn()">
           <input class="registerButton" type="button" value="Registrarse" onclick="navigateTo('/register')">
         </form>
       </div>
@@ -25,7 +25,7 @@ function logIn() {
     const id = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const url = 'http://localhost:8080/login?id=${id}&password=${password}';
+    const url = '{http://localhost:8080/login}?id=${id}&password=${password}';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -40,4 +40,5 @@ function logIn() {
         console.error("Error: ", error);
     });
     event.preventDefault();
+    navigateTo('/home');
 }
