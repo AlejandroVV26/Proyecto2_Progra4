@@ -22,8 +22,10 @@ public class PrincipalController {
         return "index.html";
     }
 
-    @PostMapping("/registrarse")
-    public ResponseEntity<Void> register(@PathParam("nombre") String name, @PathParam("apellidos")String lastName, @PathParam("telefono")String phone, @PathParam("email")String email, @PathParam("cedula")String id, @PathParam("contrasena")String password, @PathParam("direccion")String address){
+    @PostMapping("/registrarse/{nombre}/{apellidos}/{telefono}/{correo}/{id}/{contrasena}")
+    public ResponseEntity<Void> register(@PathVariable("nombre") String name, @PathVariable("apellidos")String lastName,
+                                         @PathVariable("telefono")String phone, @PathVariable("correo")String email,
+                                         @PathVariable("id")String id, @PathVariable("contrasena")String password){
         Usuario user = new Usuario(id.trim(), password.trim(), "Proveedor");
         Proveedor prov = new Proveedor(id.trim(), name, lastName, phone, email, user);
         try{

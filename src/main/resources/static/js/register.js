@@ -37,10 +37,6 @@ function register() {
         </div>
         <div class="input_par">
           <div class="input_comp">
-            <label for="address">Dirección</label>
-            <input class="register_input" type="text" id="address" name="address" placeholder="Dirección" required>
-          </div>
-          <div class="input_comp">
             <label for="confirmPassword">Confirmar Contraseña</label>
             <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña" required>
           </div>
@@ -63,14 +59,14 @@ async function registerProveedor(event) {
         const proveedor = {
             id: proveedorData.id,
             nombre: proveedorData.name,
-            apellido: proveedorData.lastName,
+            apellidos: proveedorData.lastName,
             telefono: proveedorData.phone,
             correo: proveedorData.email,
-            direccion: proveedorData.address
+            contrasena: document.getElementById("password").value
         };
 
         // Registrar el proveedor
-        const response = await fetch('/api/proveedores/agregar', {
+        const response = await fetch('http://localhost:8080/registrarse/{{nombre}}/{{apellidos}}/{{telefono}}/{{correo}}/{{id}}/{{contrasena}}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
