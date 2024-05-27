@@ -25,7 +25,7 @@ function logIn() {
     const id = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const url = '{http://localhost:8080/login}?id=${id}&password=${password}';
+    const url = '${http://localhost:8080/login}?id=${id}&password=${password}';
     fetch(url, {
         method: 'POST',
         headers: {
