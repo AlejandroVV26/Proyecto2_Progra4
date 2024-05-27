@@ -48,10 +48,6 @@ function profile() {
                     </div>
                     <div class="input_par">
                         <div class="input_comp">
-                            <label for="address">Dirección</label>
-                            <input type="text" id="address" placeholder="Dirección" required>
-                        </div>
-                        <div class="input_comp">
                             <label for="confirmPassword">Confirmar Contraseña</label>
                             <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña" required>
                         </div>
